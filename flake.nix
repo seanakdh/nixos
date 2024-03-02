@@ -20,13 +20,18 @@
     {
       nixosConfigurations = {
         ${tux-laptop} = nixpkgs.lib.nixosSystem {
-
-          specialArgs = {inherit inputs unstable;};
+          specialArgs = {inherit inputs unstable tux-laptop;};
           modules = [ 
-            ./hosts/${tux-laptop}/configuration.nix
-            ./hosts/${tux-laptop}/hardware-configuration.nix
+            # ./hosts/${tux-laptop}/configuration.nix
+            # ./hosts/${tux-laptop}/hardware-configuration.nix
+             ./hosts/${tux-laptop}/defaults.nix
+            # ./system/sh.nix
+            # ./system/base.nix
+            # ./system/wm/xfce4-i3.nix
+            # ./system/networking.nix
             # inputs.home-manager.nixosModules.default
           ];
+          # networking.hostName = "tux";
         };
       };
     };

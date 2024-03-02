@@ -14,24 +14,23 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
-  #
-  boot.loader.systemd-boot.enable = true; 
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "i915.force_probe=46a6" ];
   powerManagement.cpuFreqGovernor = "performance";
   # sound.enable = true;
   #hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
-  # hardware.tuxedo-control-center.enable = true;
-  networking = {
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
-    };
-    hostName = "tux";
-    networkmanager.enable = true;
-  };
+
+  # networking = {
+  #   firewall = {
+  #     enable = true;
+  #     allowedTCPPorts = [ ];
+  #     allowedUDPPorts = [ ];
+  #   };
+  #   hostName = "tux";
+  #   networkmanager.enable = true;
+  # };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -52,34 +51,34 @@
   };
 
   services = {
-    xserver = {
-      xkb.layout = "ch";
-      xkb.variant = "de_nodeadkeys";
-      enable = true;
-      videoDrivers = ["modesetting"];
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [
-          i3status
-          # i3lock
-          dmenu
-          picom
-          nitrogen
-        ];
-      };
-      desktopManager = {
-        xterm.enable = false;
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-        };
-      };
-      displayManager = {
-        lightdm.enable = true;
-        defaultSession = "xfce+i3";
-      };
-    };
+    # xserver = {
+    #   xkb.layout = "ch";
+    #   xkb.variant = "de_nodeadkeys";
+    #   enable = true;
+    #   videoDrivers = ["modesetting"];
+    #   windowManager.i3 = {
+    #     enable = true;
+    #     extraPackages = with pkgs; [
+    #       i3status
+    #       # i3lock
+    #       dmenu
+    #       picom
+    #       nitrogen
+    #     ];
+    #   };
+    #   desktopManager = {
+    #     xterm.enable = false;
+    #     xfce = {
+    #       enable = true;
+    #       noDesktop = true;
+    #       enableXfwm = false;
+    #     };
+    #   };
+    #   displayManager = {
+    #     lightdm.enable = true;
+    #     defaultSession = "xfce+i3";
+    #   };
+    # };
     # autorandr.enable = true;
 
     locate.enable = true;
@@ -116,34 +115,34 @@
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-media-driver
 
-  environment.xfce.excludePackages = with pkgs; [
-            xfce.xfce4-appfinder
-            xfce.xfce4-screenshooter
-            xfce.xfce4-taskmanager
-  ];
+  # environment.xfce.excludePackages = with pkgs; [
+  #           xfce.xfce4-appfinder
+  #           xfce.xfce4-screenshooter
+  #           xfce.xfce4-taskmanager
+  # ];
 
 
   #enable zsh
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -al";
-      update = "sudo nixos-rebuild switch --cores 5";
-      upgrade = "sudo nixos-rebuild switch --upgrade";
-    };
-    enableCompletion = true;
-    enableLsColors = true;
-    autosuggestions.enable = true;
-    autosuggestions.async = true;
-    setOptions = [
-      "VI"
-      "HIST_IGNORE_DUPS"
-      "SHARE_HISTORY"
-      "HIST_FCNTL_LOCK"
-    ];
-    histSize = 10000;
-    histFile = "~/.zsh_history";
-  };
+  # programs.zsh = {
+  #   enable = true;
+  #   shellAliases = {
+  #     ll = "ls -al";
+  #     update = "sudo nixos-rebuild switch --cores 5";
+  #     upgrade = "sudo nixos-rebuild switch --upgrade";
+  #   };
+    # enableCompletion = true;
+    # enableLsColors = true;
+    # autosuggestions.enable = true;
+    # autosuggestions.async = true;
+    # setOptions = [
+    #   "VI"
+    #   "HIST_IGNORE_DUPS"
+    #   "SHARE_HISTORY"
+    #   "HIST_FCNTL_LOCK"
+    # ];
+    # histSize = 10000;
+    # histFile = "~/.zsh_history";
+  # };
 
   programs.ssh.startAgent = true;
   programs.light.enable = true;
@@ -151,7 +150,6 @@
 
   virtualisation.virtualbox.host.enable = true;
 
-  users.defaultUserShell = pkgs.zsh;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sean = {
@@ -184,69 +182,33 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # Fonts
   fonts.packages = with pkgs; [
     nerdfonts
   ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    htop
-    libtool
-    gcc
-    gnumake
-    cmake
-    ksnip
-    copyq
-    firefox
-    # alacritty
-    lxappearance
-    qt5ct
-    system-config-printer
-    skanlite
-    hplip
-    networkmanagerapplet
-    # blueberry
-    pulseaudioFull
-    pavucontrol
-    gnome.gnome-keyring
-    gvfs
-    git
-    polkit
-    unrar
-    unzip
-    wget
-    # dunst
-    #udisks2
-    #udiskie
-    xfce.thunar-volman
-    #inputs.helix.packages."${pkgs.system}".helix
-  ];
+  # security = {
+  #   polkit.enable = true;
+  #   rtkit.enable = true;
+  # };
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
-  };
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
+  # systemd = {
+  #   user.services.polkit-gnome-authentication-agent-1 = {
+  #     description = "polkit-gnome-authentication-agent-1";
+  #     wantedBy = [ "graphical-session.target" ];
+  #     wants = [ "graphical-session.target" ];
+  #     after = [ "graphical-session.target" ];
+  #     serviceConfig = {
+  #       Type = "simple";
+  #       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  #       Restart = "on-failure";
+  #       RestartSec = 1;
+  #       TimeoutStopSec = 10;
+  #     };
+  #   };
+  # };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
