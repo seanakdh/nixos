@@ -128,8 +128,8 @@
     enable = true;
     shellAliases = {
       ll = "ls -al";
-      update = "sudo nixos-rebuild switch";
-      upgrade = "sudo nixos-rebuild switch --upgrade";
+      update = "sudo nixos-rebuild switch --cores 5";
+      upgrade = "sudo nixos-rebuild switch --upgrade --cores 5";
     };
     enableCompletion = true;
     enableLsColors = true;
