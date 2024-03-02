@@ -5,5 +5,6 @@
   [
     ./base/basePackages.nix
     ./base/baseSecurity.nix
+    ./base/boot.nix
   ];
 }
