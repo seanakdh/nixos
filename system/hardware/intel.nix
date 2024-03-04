@@ -14,6 +14,6 @@
     ];
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-media-driver
-
+  boot.kernelParams = [ "i915.force_probe=46a6" ];
 
 }

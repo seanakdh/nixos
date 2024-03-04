@@ -15,6 +15,8 @@
     ksnip
     copyq
   ];
+  services.locate.localuser = null;
+  services.locate.package = pkgs.mlocate;
   services.locate.enable = true;
   programs.ssh.startAgent = true;
 }

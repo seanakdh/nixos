@@ -2,7 +2,6 @@
 
 {
   imports = with unstable pkgs; [
-    # ./configuration.nix
     ./hardware-configuration.nix
     ../../system/base.nix
     ../../system/base/sh.nix

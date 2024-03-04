@@ -6,6 +6,7 @@
     ./base/packages.nix
     ./base/security.nix
     ./base/boot.nix
+    ./base/sh.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
