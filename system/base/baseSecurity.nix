@@ -21,4 +21,10 @@
       };
     };
   };
+  services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  environment.systemPackages = with pkgs; [
+    polkit
+    gnome.gnome-keyring
+  ];
 }

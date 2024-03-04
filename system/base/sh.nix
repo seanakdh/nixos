@@ -2,8 +2,8 @@
 let
   aliases = {
       ll = "ls -al";
-      update = "sudo nixos-rebuild switch --cores 5";
-      upgrade = "sudo nixos-rebuild switch --upgrade";
+      rebuild = "sudo nixos-rebuild switch --cores 5";
+      upgrade = "nix flake update ~/.config/nixos && sudo nixos-rebuild switch --upgrade --cores 5";
   };
   init = "neofetch";
 in

@@ -20,7 +20,7 @@
   # powerManagement.cpuFreqGovernor = "performance";
   # sound.enable = true;
   #hardware.pulseaudio.enable = true;
-  hardware.bluetooth.enable = true;
+  # hardware.bluetooth.enable = true;
 
   # networking = {
   #   firewall = {
@@ -41,7 +41,7 @@
 
 
   # Configure console keymap
-  console.keyMap = "sg";
+  # console.keyMap = "sg";
   # Environment variables
   environment.variables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -81,39 +81,39 @@
     # };
     # autorandr.enable = true;
 
-    locate.enable = true;
-    gvfs.enable = true;
-    gnome.gnome-keyring.enable = true;
-    blueman.enable = true;
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-    };
-    printing.enable = true;
-    avahi = {
-      enable = true;
-      nssmdns = true;
-      openFirewall = true;
-    };
+    # locate.enable = true;
+    # gvfs.enable = true;
+    # gnome.gnome-keyring.enable = true;
+    # blueman.enable = true;
+    # pipewire = {
+    #   enable = true;
+    #   alsa = {
+    #     enable = true;
+    #     support32Bit = true;
+    #   };
+    #   pulse.enable = true;
+    # };
+    # printing.enable = true;
+    # avahi = {
+    #   enable = true;
+    #   nssmdns = true;
+    #   openFirewall = true;
+    # };
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-media-driver
+  # nixpkgs.config.packageOverrides = pkgs: {
+  #   intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  # };
+  # hardware.opengl = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [
+  #     intel-media-driver # LIBVA_DRIVER_NAME=iHD
+  #     intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+  #     vaapiVdpau
+  #     libvdpau-va-gl
+  #   ];
+  # };
+  # environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-media-driver
 
   # environment.xfce.excludePackages = with pkgs; [
   #           xfce.xfce4-appfinder
@@ -144,9 +144,9 @@
     # histFile = "~/.zsh_history";
   # };
 
-  programs.ssh.startAgent = true;
-  programs.light.enable = true;
-  programs.java.enable = true;
+  # programs.ssh.startAgent = true;
+  # programs.light.enable = true;
+  # programs.java.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
 
@@ -158,26 +158,8 @@
     initialPassword = "change@me!";
     extraGroups = [ "user-with-access-to-virtualbox" "networkmanager" "wheel" "lp" "audio" "video" "users" ];
     packages = with pkgs; [
-      chezmoi
-      neovim
-      ripgrep
-      vim
-      zim
-      krusader
-      keepassxc
-      nextcloud-client
       chromium
-      cargo
       unstable.emacs
-      rustc
-      rust-analyzer
-      kotlin
-      unstable.kotlin-language-server
-      # inputs.unstable.legacyPackages."${pkgs.system}".kotlin-language-server
-      nil
-      jetbrains.idea-community
-      spotify
-      libreoffice
     ];
   };
 

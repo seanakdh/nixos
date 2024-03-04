@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking = {
+   networking = {
     firewall = {
       enable = true;
       allowedTCPPorts = [ ];
@@ -9,4 +9,8 @@
     };
     networkmanager.enable = true;
   };
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+  ];
 }

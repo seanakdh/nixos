@@ -1,33 +1,26 @@
 { config, lib, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     neofetch
     vim
-    btop
-    libtool
-    gcc
-    gnumake
-    cmake
-    ksnip
-    copyq
+    # btop
+    # ksnip
+    # copyq
     firefox
-    # lxappearance
     qt5ct
-    system-config-printer
-    skanlite
-    hplip
-    networkmanagerapplet
-    pulseaudioFull
-    pavucontrol
-    gnome.gnome-keyring
+    # system-config-printer
+    # skanlite
+    # hplip
+    # networkmanagerapplet
+    # pulseaudioFull
+    # pavucontrol
     gvfs
-    git
-    polkit
-    unrar
-    unzip
-    wget
-    xfce.thunar-volman
+    # git
+    # polkit
+    # gnome.gnome-keyring
+    # unrar
+    # unzip
+    # wget
   ];
 }

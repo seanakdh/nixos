@@ -22,7 +22,7 @@
         ${tux-laptop} = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs unstable tux-laptop;};
           modules = [ 
-             ./hosts/${tux-laptop}/defaults.nix
+             ./hosts/${tux-laptop}/default.nix
           ];
         };
       };

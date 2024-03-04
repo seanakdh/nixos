@@ -13,6 +13,7 @@
         dmenu
         picom
         nitrogen
+        xfce.thunar-volman
       ];
     };
     desktopManager = {
