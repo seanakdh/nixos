@@ -34,4 +34,5 @@
             xfce.xfce4-screenshooter
             xfce.xfce4-taskmanager
   ];
+  programs.light.enable = true;
 }

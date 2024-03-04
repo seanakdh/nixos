@@ -2,7 +2,7 @@
 
 {
   imports = with unstable pkgs; [
-    ./configuration.nix
+    # ./configuration.nix
     ./hardware-configuration.nix
     ../../system/base.nix
     ../../system/base/sh.nix
@@ -15,19 +15,9 @@
     ../../system/applications/office.nix
     ../../system/applications/utils.nix
     ../../system/applications/development.nix
+    ../../system/applications/virtualbox.nix
     ../../system/fonts/nerdfonts.nix
   ];
-  nixpkgs.config.allowUnfree = true;
-
-  virtualisation.virtualbox.host.enable = true;
-
-  programs.light.enable = true;
-
   networking.hostName = tux-laptop;
-
-  console.keyMap = "sg";
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   system.stateVersion = "23.11"; # Did you read the comment?
 }
