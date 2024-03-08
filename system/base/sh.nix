@@ -5,7 +5,7 @@ let
       rebuild = "sudo nixos-rebuild switch --cores 5";
       upgrade = "nix flake update ~/.config/nixos && sudo nixos-rebuild switch --upgrade --cores 5";
   };
-  init = "neofetch";
+  init = "";
 in
 {
   programs.bash = {

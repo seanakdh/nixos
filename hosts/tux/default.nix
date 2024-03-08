@@ -6,6 +6,7 @@
     ../../system/base.nix
     ../../system/base/sh.nix
     ../../system/wm/xfce4-i3.nix
+    # ../../system/wm/hyprland.nix
     ../../system/hardware/intel.nix
     ../../system/services/audio.nix
     ../../system/services/networking.nix

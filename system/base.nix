@@ -27,7 +27,7 @@
     isNormalUser = true;
     description = "sean";
     initialPassword = "change@me!";
-    extraGroups = [ "user-with-access-to-virtualbox" "networkmanager" "wheel" "lp" "audio" "video" "users" ];
+    extraGroups = [ "user-with-access-to-virtualbox" "networkmanager" "wheel" "lp" "audio" "input" "video" "users" ];
     packages = with pkgs; [
       chromium
       unstable.emacs

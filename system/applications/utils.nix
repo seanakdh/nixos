@@ -14,6 +14,10 @@
     btop
     ksnip
     copyq
+    du-dust
+    bat
+    xclip
+    sqlite
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;

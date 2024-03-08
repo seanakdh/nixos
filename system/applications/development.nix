@@ -11,6 +11,7 @@
     rust-analyzer
     rustc
     cargo
+    rustfmt
     jetbrains.idea-community
     nixd
   ];
