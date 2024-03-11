@@ -8,10 +8,10 @@
     cmake
     unstable.kotlin-language-server
     kotlin
-    rust-analyzer
-    rustc
-    cargo
-    rustfmt
+    unstable.rust-analyzer
+    unstable.rustc
+    unstable.cargo
+    unstable.rustfmt
     jetbrains.idea-community
     nixd
   ];

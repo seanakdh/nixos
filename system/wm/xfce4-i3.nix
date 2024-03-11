@@ -14,6 +14,7 @@
         picom
         nitrogen
         xfce.thunar-volman
+        xfce.thunar-archive-plugin
       ];
     };
     desktopManager = {
@@ -29,6 +30,7 @@
       defaultSession = "xfce+i3";
     };
   };
+  programs.thunar.plugins = [ pkgs.xfce.thunar-archive-plugin ];
   environment.xfce.excludePackages = with pkgs; [
             xfce.xfce4-appfinder
             xfce.xfce4-screenshooter
