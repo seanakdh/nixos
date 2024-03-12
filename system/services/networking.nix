@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, ... }:
 
 {
   networking = {
@@ -8,5 +8,6 @@
       allowedUDPPorts = [ ];
     };
     networkmanager.enable = true;
+    hostName = hostname;
   };
 }

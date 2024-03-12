@@ -4,8 +4,10 @@
   imports = with unstable hostname; [
     ./hardware-configuration.nix
     ../../system/base
+    ../../users/sean
     ../../system/wm/xfce4-i3.nix
     # ../../system/wm/hyprland.nix
+    ../../system/env
     ../../system/hardware/intel.nix
     ../../system/services/audio.nix
     ../../system/services/networking.nix
