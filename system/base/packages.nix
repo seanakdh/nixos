@@ -5,7 +5,6 @@
     neofetch
     vim
     firefox
-    qt5ct
     gvfs
   ];
 }

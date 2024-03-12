@@ -13,6 +13,7 @@
         dmenu
         picom
         nitrogen
+        qt5ct
         xfce.thunar-volman
         xfce.thunar-archive-plugin
       ];

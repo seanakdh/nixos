@@ -12,17 +12,22 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      unstable = nixpkgs-unstable.legacyPackages.${system};
-      tux-laptop = "tux";
+      tux = {
+        hostname = "tux";
+        system = "x86_64-linux";
+      };
+
     in
     {
       nixosConfigurations = {
-        ${tux-laptop} = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs unstable tux-laptop;};
+        ${tux.hostname} = nixpkgs.lib.nixosSystem {
+          system = tux.system;
+          specialArgs = {
+            unstable = nixpkgs-unstable.legacyPackages.${tux.system};
+            hostname = tux.hostname;
+          };
           modules =  [
-             ./hosts/${tux-laptop}/default.nix
+             ./hosts/${tux.hostname}
           ];
         };
       };

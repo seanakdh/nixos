@@ -1,13 +1,16 @@
-{ config, lib, pkgs, unstable, ... }:
+{ config, lib, pkgs, unstable, hostname, ... }:
 
 {
   imports =
   [
-    ./base/packages.nix
-    ./base/security.nix
-    ./base/boot.nix
-    ./base/sh.nix
+    ./packages.nix
+    ./security.nix
+    ./boot.nix
+    ./sh.nix
   ];
+
+  networking.hostName = hostname;
+  system.stateVersion = "23.11";
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -22,6 +25,8 @@
     TERMINAL = "xfce4-terminal";
     EDITOR = "emacs";
   };
+
+
 
   users.users.sean = {
     isNormalUser = true;

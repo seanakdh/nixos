@@ -1,10 +1,9 @@
-{ config, lib, pkgs, unstable, tux-laptop, ... }:
+{ config, lib, pkgs, unstable, hostname, ... }:
 
 {
-  imports = with unstable pkgs; [
+  imports = with unstable hostname; [
     ./hardware-configuration.nix
-    ../../system/base.nix
-    ../../system/base/sh.nix
+    ../../system/base
     ../../system/wm/xfce4-i3.nix
     # ../../system/wm/hyprland.nix
     ../../system/hardware/intel.nix
@@ -18,6 +17,4 @@
     ../../system/applications/virtualbox.nix
     ../../system/fonts/nerdfonts.nix
   ];
-  networking.hostName = tux-laptop;
-  system.stateVersion = "23.11"; # Did you read the comment?
 }
