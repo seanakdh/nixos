@@ -13,7 +13,9 @@
     unstable.cargo
     unstable.rustfmt
     jetbrains.idea-community
-    nixd
+    nil
+    # unstable.nixd
+    # unstable.rnix-lsp
   ];
   programs.java.enable = true;
 }
