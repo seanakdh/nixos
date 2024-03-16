@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    killall
     chromium
     unstable.emacs
     neofetch
