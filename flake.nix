@@ -19,8 +19,8 @@
         pkgs = import nixpkgs { system = system; config.allowUnfree = true; };
       };
       raspi = {
-        
-      }
+
+      };
     in
     {
       nixosConfigurations = {
