@@ -6,5 +6,6 @@
     zim
     nextcloud-client
     spotify
+    obsidian
   ];
 }
