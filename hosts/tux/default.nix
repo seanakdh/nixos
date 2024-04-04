@@ -1,4 +1,4 @@
-{ config, lib, pkgs, unstable, hostname, ... }:
+{ config, lib, pkgs, unstable, hostname, nixpkgs-usntable, ... }:
 
 {
   imports = with unstable hostname; [

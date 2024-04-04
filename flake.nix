@@ -12,20 +12,26 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
-      tux = {
+      tux = rec {
         hostname = "tux";
         system = "x86_64-linux";
+        unstable = import nixpkgs-unstable { system = system; config.allowUnfree = true; };
+        pkgs = import nixpkgs { system = system; config.allowUnfree = true; };
       };
+      raspi = {
+        
+      }
     in
     {
       nixosConfigurations = {
         ${tux.hostname} = nixpkgs.lib.nixosSystem {
           system = tux.system;
           specialArgs = {
-            unstable = nixpkgs-unstable.legacyPackages.${tux.system};
+            unstable = tux.unstable;
+            pkgs = tux.pkgs;
             hostname = tux.hostname;
           };
-          modules =  [
+          modules = [
              ./hosts/${tux.hostname}
           ];
         };

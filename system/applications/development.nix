@@ -14,6 +14,8 @@
     unstable.rustfmt
     jetbrains.idea-community
     nil
+    unstable.vscodium
+    unstable.neovim
     # unstable.nixd
     # unstable.rnix-lsp
   ];
