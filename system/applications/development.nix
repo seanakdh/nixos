@@ -16,6 +16,8 @@
     nil
     unstable.vscodium
     unstable.neovim
+    jdk21
+    graphviz
     # unstable.nixd
     # unstable.rnix-lsp
   ];
