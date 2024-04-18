@@ -4,7 +4,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8080 ];
+      allowedTCPPorts = [ ];
       allowedUDPPorts = [ ];
     };
     networkmanager.enable = true;
