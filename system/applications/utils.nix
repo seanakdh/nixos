@@ -18,6 +18,8 @@
     bat
     xclip
     sqlite
+    p7zip
+    xarchiver
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;

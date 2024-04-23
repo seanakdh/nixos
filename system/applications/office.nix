@@ -7,5 +7,6 @@
     nextcloud-client
     spotify
     unstable.obsidian
+    evolution
   ];
 }
