@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
 let
   aliases = {
-      ll = "ls -al";
-      rebuild = "sudo nixos-rebuild switch --cores 5";
-      upgrade = "nix flake update ~/.config/nixos && sudo nixos-rebuild switch --upgrade --cores 5";
+    ll = "ls -al";
+    rebuild = "sudo nixos-rebuild switch --cores 5";
+    upgrade =
+      "nix flake update ~/.config/nixos && sudo nixos-rebuild switch --upgrade --cores 5";
   };
   init = "";
-in
-{
+in {
   programs.bash = {
     shellInit = init;
     shellAliases = aliases;
@@ -22,14 +22,10 @@ in
     autosuggestions.enable = true;
     autosuggestions.async = true;
     syntaxHighlighting.enable = true;
-    setOptions = [
-      "VI"
-      "HIST_IGNORE_DUPS"
-      "SHARE_HISTORY"
-      "HIST_FCNTL_LOCK"
-    ];
+    setOptions = [ "VI" "HIST_IGNORE_DUPS" "SHARE_HISTORY" "HIST_FCNTL_LOCK" ];
     histSize = 10000;
     histFile = "~/.zsh_history";
   };
+  environment.localBinInPath = true;
   users.defaultUserShell = pkgs.zsh;
 }
