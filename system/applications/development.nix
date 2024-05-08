@@ -17,7 +17,6 @@
     nil
     nixfmt
     unstable.vscodium
-    unstable.neovim
     jdk21
     graphviz
     shfmt

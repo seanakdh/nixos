@@ -6,8 +6,11 @@
     chromium
     unstable.emacs
     neofetch
-    vim
     firefox
     gvfs
   ];
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+  };
 }

@@ -16,7 +16,7 @@
     ../../system/applications/office.nix
     ../../system/applications/utils.nix
     ../../system/applications/development.nix
-    ../../system/applications/virtualbox.nix
+    ../../system/applications/vm.nix
     ../../system/fonts/nerdfonts.nix
   ];
 }

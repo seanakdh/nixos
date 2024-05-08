@@ -26,6 +26,14 @@ in {
     histSize = 10000;
     histFile = "~/.zsh_history";
   };
+
+  programs.tmux = {
+    enable = true;
+    newSession = true;
+    shortcut = "b";
+    keyMode = "vi";
+  };
+
   environment.localBinInPath = true;
   users.defaultUserShell = pkgs.zsh;
 }

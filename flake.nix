@@ -13,19 +13,22 @@
         system = "x86_64-linux";
         specialArgs = {
           hostname = "tux";
-          unstable = import nixpkgs-unstable { system = system; config.allowUnfree = allowUnfree; };
-          pkgs = import nixpkgs { system = system; config.allowUnfree = allowUnfree; };
+          unstable = import nixpkgs-unstable {
+            system = system;
+            config.allowUnfree = allowUnfree;
+          };
+          pkgs = import nixpkgs {
+            system = system;
+            config.allowUnfree = allowUnfree;
+          };
         };
-        modules = [
-          ./hosts/${specialArgs.hostname}
-        ];
+        modules = [ ./hosts/${specialArgs.hostname} ];
       };
-    in
-    {
+    in {
+
       nixosConfigurations = {
-        ${tux.specialArgs.hostname} = nixpkgs.lib.nixosSystem {
-          inherit (tux) system specialArgs modules;
-        };
+        ${tux.specialArgs.hostname} =
+          nixpkgs.lib.nixosSystem { inherit (tux) system specialArgs modules; };
       };
     };
 }
