@@ -1,8 +1,14 @@
-{ config, lib, pkgs, unstable, hostname, nixpkgs-usntable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}@args:
 
 {
-  imports = with unstable hostname; [
+  imports = with args; [
     ./hardware-configuration.nix
+    ./networking.nix
     ../../system/base
     ../../users/sean
     ../../system/wm/xfce4-i3.nix
@@ -10,7 +16,6 @@
     ../../system/env
     ../../system/hardware/intel.nix
     ../../system/services/audio.nix
-    ../../system/services/networking.nix
     ../../system/services/bluetooth.nix
     ../../system/services/printing.nix
     ../../system/applications/office.nix

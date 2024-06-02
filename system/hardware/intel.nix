@@ -1,22 +1,26 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, ... }:
 
 {
-  nixpkgs.config.packageOverrides = pkgs:
-    {
-      # intel-vaapi-driver =
-      #  pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-    };
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver =
+      pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs;
-      [
-        #intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        #intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-        #vaapiVdpau
-        #libvdpau-va-gl
-      ];
+    driSupport = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
-  # environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; }; # Force intel-media-driver
-  # boot.kernelParams = [ "i915.force_probe=46a6" ];
+  environment.systemPackages = with pkgs; [ libGL libGLU ];
+  hardware.enableAllFirmware = true;
+  hardware.cpu.intel.updateMicrocode = true;
 
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  }; # Force intel-media-driver
+  boot.kernelParams = [ "iHD.force_probe=46a6" ];
 }

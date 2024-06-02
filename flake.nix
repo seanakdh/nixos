@@ -2,33 +2,41 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs =
+    { ... }@inputs:
     let
       allowUnfree = true;
-      tux = rec {
+      tux = with inputs; rec {
+
         system = "x86_64-linux";
+
         specialArgs = {
+
           hostname = "tux";
+          inherit system;
+
           unstable = import nixpkgs-unstable {
-            system = system;
+            inherit system;
             config.allowUnfree = allowUnfree;
           };
+
           pkgs = import nixpkgs {
-            system = system;
+            inherit system;
             config.allowUnfree = allowUnfree;
           };
         };
         modules = [ ./hosts/${specialArgs.hostname} ];
       };
-    in {
-
+    in
+    with inputs;
+    rec {
       nixosConfigurations = {
-        ${tux.specialArgs.hostname} =
-          nixpkgs.lib.nixosSystem { inherit (tux) system specialArgs modules; };
+
+        ${tux.specialArgs.hostname} = nixpkgs.lib.nixosSystem { inherit (tux) system specialArgs modules; };
       };
     };
 }

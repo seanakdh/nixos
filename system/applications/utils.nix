@@ -1,4 +1,11 @@
-{ config, lib, pkgs, unstable, ... }:let
+{
+  config,
+  lib,
+  pkgs,
+  unstable,
+  ...
+}:
+let
 
   backup-script = pkgs.writeScriptBin "backup" ''
     #! ${pkgs.runtimeShell}
@@ -8,7 +15,7 @@
     # ${pkgs.rsync.outPath}/bin/rsync -ar /home/sean/ /mnt/backup/sean
 
   '';
-in 
+in
 
 {
   environment.systemPackages = with pkgs; [
@@ -31,17 +38,20 @@ in
     p7zip
     xarchiver
     ansible
+    wireguard-tools
   ];
-  systemd.mounts = [{
-    what = "/dev/backup_drive";
-    where = "/mnt/backup";
-    type = "ext4";
-  }
+  systemd.mounts = [
+    {
+      what = "/dev/backup_drive";
+      where = "/mnt/backup";
+      type = "ext4";
+    }
   ];
-  systemd.automounts = [{
-    where = "/mnt/backup";
-    wantedBy = [ "multi-user.target" ];
-  }
+  systemd.automounts = [
+    {
+      where = "/mnt/backup";
+      wantedBy = [ "multi-user.target" ];
+    }
   ];
   services.udev.extraRules = ''
     KERNEL=="sd?1", ATTRS{serial}=="S6XJNS0W739253A", SYMLINK+="backup_drive", NAME="Backup Drive", OWNER="sean", GROUP="users"

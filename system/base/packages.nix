@@ -1,5 +1,11 @@
-{ config, lib, pkgs, unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}@args:
 
+with args;
 {
   environment.systemPackages = with pkgs; [
     killall

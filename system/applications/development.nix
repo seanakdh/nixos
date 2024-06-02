@@ -1,5 +1,12 @@
-{ config, lib, pkgs, unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  unstable,
+  ...
+}@args:
 
+with args;
 {
   environment.systemPackages = with pkgs; [
     libtool
@@ -15,7 +22,7 @@
     unstable.rustfmt
     jetbrains.idea-community
     nil
-    nixfmt
+    nixfmt-rfc-style
     unstable.vscodium
     jdk21
     graphviz

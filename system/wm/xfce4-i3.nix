@@ -5,7 +5,7 @@
     xkb.layout = "ch";
     xkb.variant = "de_nodeadkeys";
     enable = true;
-    videoDrivers = ["modesetting"];
+    videoDrivers = [ "modesetting" ];
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -18,6 +18,7 @@
         xfce.thunar-archive-plugin
       ];
     };
+    displayManager.lightdm.enable = true;
     desktopManager = {
       xterm.enable = false;
       xfce = {
@@ -26,16 +27,14 @@
         enableXfwm = false;
       };
     };
-    displayManager = {
-      lightdm.enable = true;
-      defaultSession = "xfce+i3";
-    };
   };
-  programs.thunar.plugins = [ pkgs.xfce.thunar-archive-plugin ];
+  services.displayManager = { defaultSession = "xfce+i3"; };
+  programs.thunar.plugins =
+    [ pkgs.xfce.thunar-archive-plugin pkgs.gnome.gnome-disk-utility ];
   environment.xfce.excludePackages = with pkgs; [
-            xfce.xfce4-appfinder
-            xfce.xfce4-screenshooter
-            xfce.xfce4-taskmanager
+    xfce.xfce4-appfinder
+    xfce.xfce4-screenshooter
+    xfce.xfce4-taskmanager
   ];
   programs.light.enable = true;
 
