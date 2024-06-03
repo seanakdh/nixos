@@ -24,5 +24,11 @@
     "nix-command"
     "flakes"
   ];
+  system.userActivationScripts = {
+    cloneFlake = ''
+      cd /etc
+      ${pkgs.git}/bin/git clone https://github.com/seanakdh/nixos 2>/dev/null
+    '';
+  };
   system.stateVersion = "23.11";
 }
