@@ -7,7 +7,6 @@
 
 {
   imports = with inputs; [
-    /etc/hardware-configuration.nix
     ../../system/services/nextcloud.nix
     ../../system/base/sh.nix
     ../../system/base/boot.nix
