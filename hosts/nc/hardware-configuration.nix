@@ -1,4 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
@@ -44,5 +50,5 @@
   networking.useDHCP = lib.mkDefault false;
   # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux"
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

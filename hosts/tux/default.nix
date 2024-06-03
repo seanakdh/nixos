@@ -9,6 +9,7 @@
   imports = with inputs; [
     ./hardware-configuration.nix
     ./networking.nix
+    ./aliases.nix
     ../../system/base
     ../../users/sean
     ../../system/wm/xfce4-i3.nix

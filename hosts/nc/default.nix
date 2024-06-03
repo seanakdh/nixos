@@ -7,14 +7,15 @@
 
 {
   imports = with inputs; [
+    ./aliases.nix
+    ./networking.nix
+    ./hardware-configuration.nix
+    ../../system/applications/server_base.nix
     ../../system/services/nextcloud.nix
     ../../system/base/sh.nix
     ../../system/base/boot.nix
     ../../system/env
     ../../users/admin
-    ../../system/applications/server_base.nix
-    ./networking.nix
-    ./hardware-configuration.nix
   ];
   services.qemuGuest.enable = true;
   security.sudo.wheelNeedsPassword = false;
