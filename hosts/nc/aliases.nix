@@ -1,5 +1,10 @@
-{ config, lib, pkgs, hostname, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  hostname,
+  ...
+}:
 
 {
   config,
@@ -23,5 +28,4 @@ in
   programs.bash.shellInit = init;
   programs.zsh.shellAliases = aliases;
   programs.zsh.shellInit = init;
-}
 }
