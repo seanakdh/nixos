@@ -5,13 +5,6 @@
   hostname,
   ...
 }:
-
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
 let
 
   aliases = {
