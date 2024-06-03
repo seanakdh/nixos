@@ -1,14 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  environment.variables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-    BROWSER = "firefox";
-    TERMINAL = "xfce4-terminal";
-    EDITOR = "emacs";
-  };
+  # Set your time zone.
+  time.timeZone = "Europe/Zurich";
 
   i18n.defaultLocale = "en_IE.UTF-8";
-  time.timeZone = "Europe/Zurich";
-  console.keyMap = "sg";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = lib.mkForce "sg";
+    useXkbConfig = true; # use xkb.options in tty.
+  };
 }

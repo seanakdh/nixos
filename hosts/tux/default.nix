@@ -3,10 +3,10 @@
   lib,
   pkgs,
   ...
-}@args:
+}@inputs:
 
 {
-  imports = with args; [
+  imports = with inputs; [
     ./hardware-configuration.nix
     ./networking.nix
     ../../system/base
@@ -24,4 +24,15 @@
     ../../system/applications/vm.nix
     ../../system/fonts/nerdfonts.nix
   ];
+  system.stateVersion = "23.11";
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  environment.variables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    BROWSER = "firefox";
+    TERMINAL = "xfce4-terminal";
+    EDITOR = "emacs";
+  };
 }

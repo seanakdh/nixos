@@ -31,12 +31,25 @@
         };
         modules = [ ./hosts/${specialArgs.hostname} ];
       };
+      nc = with inputs; rec {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          hostname = "nc";
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = allowUnfree;
+          };
+          modules = [ ./hosts/${specialArgs.hostname} ];
+        };
+      };
     in
     with inputs;
     {
       nixosConfigurations = {
 
         ${tux.specialArgs.hostname} = nixpkgs.lib.nixosSystem { inherit (tux) system specialArgs modules; };
+        ${nc.specialArgs.hostname} = nixpkgs.lib.nixosSystem { inherit (nc) system specialArgs modules; };
       };
     };
 }
