@@ -40,8 +40,8 @@
             inherit system;
             config.allowUnfree = allowUnfree;
           };
-          modules = [ ./hosts/${specialArgs.hostname} ];
         };
+        modules = [ ./hosts/${specialArgs.hostname} ];
       };
     in
     with inputs;
