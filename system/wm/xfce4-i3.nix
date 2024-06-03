@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   services.xserver = {
@@ -8,6 +13,7 @@
     videoDrivers = [ "modesetting" ];
     windowManager.i3 = {
       enable = true;
+      configFile = ../../configs/i3/config;
       extraPackages = with pkgs; [
         i3status
         dmenu
@@ -28,14 +34,17 @@
       };
     };
   };
-  services.displayManager = { defaultSession = "xfce+i3"; };
-  programs.thunar.plugins =
-    [ pkgs.xfce.thunar-archive-plugin pkgs.gnome.gnome-disk-utility ];
+  services.displayManager = {
+    defaultSession = "xfce+i3";
+  };
+  programs.thunar.plugins = [
+    pkgs.xfce.thunar-archive-plugin
+    pkgs.gnome.gnome-disk-utility
+  ];
   environment.xfce.excludePackages = with pkgs; [
     xfce.xfce4-appfinder
     xfce.xfce4-screenshooter
     xfce.xfce4-taskmanager
   ];
   programs.light.enable = true;
-
 }
