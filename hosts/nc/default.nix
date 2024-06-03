@@ -14,7 +14,7 @@
     ../../users/admin
     ../../system/applications/server_base.nix
     ./networking.nix
-    ./hardware-confiuration.nix
+    ./hardware-configuration.nix
   ];
   services.qemuGuest.enable = true;
   security.sudo.wheelNeedsPassword = false;
