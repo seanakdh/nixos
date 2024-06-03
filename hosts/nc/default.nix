@@ -27,7 +27,20 @@
   system.userActivationScripts = {
     cloneFlake = ''
       cd /etc
-      ${pkgs.git}/bin/git clone https://github.com/seanakdh/nixos 2>/dev/null
+      # Directory to clone/operate in (replace with your desired path)
+      repo_dir="/etc/nixos"
+
+      # Check if the directory exists
+      if [ ! -d "$repo_dir" ]; then
+        # Not a directory, likely not cloned. Clone the repository.
+        echo "Cloning repository..."
+        git clone "https://github.com/seanakdh/nixos.git" "$repo_dir"
+      else
+        # Directory exists, likely a Git repository. Checkout HEAD.
+        echo "Found existing repository. Switching to HEAD..."
+        cd "$repo_dir"
+        git checkout HEAD
+      fi
     '';
   };
   system.stateVersion = "23.11";
