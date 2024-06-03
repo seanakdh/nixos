@@ -1,9 +1,13 @@
-{ config, lib, pkgs, unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver =
-      pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
   hardware.opengl = {
     enable = true;
@@ -15,7 +19,10 @@
       libvdpau-va-gl
     ];
   };
-  environment.systemPackages = with pkgs; [ libGL libGLU ];
+  environment.systemPackages = with pkgs; [
+    libGL
+    libGLU
+  ];
   hardware.enableAllFirmware = true;
   hardware.cpu.intel.updateMicrocode = true;
 

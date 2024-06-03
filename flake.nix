@@ -33,7 +33,7 @@
       };
     in
     with inputs;
-    rec {
+    {
       nixosConfigurations = {
 
         ${tux.specialArgs.hostname} = nixpkgs.lib.nixosSystem { inherit (tux) system specialArgs modules; };

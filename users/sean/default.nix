@@ -3,9 +3,8 @@
   lib,
   pkgs,
   ...
-}@args:
+}:
 
-with args;
 {
   users.users.sean = {
     isNormalUser = true;
@@ -22,11 +21,6 @@ with args;
       "video"
       "users"
       "dialout"
-    ];
-
-    packages = with pkgs; [
-      # chromium
-      # unstable.emacs
     ];
   };
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

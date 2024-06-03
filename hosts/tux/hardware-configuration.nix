@@ -6,10 +6,10 @@
   lib,
   pkgs,
   modulesPath,
+  system,
   ...
-}@args:
+}:
 
-with args;
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 

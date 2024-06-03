@@ -2,10 +2,10 @@
   config,
   lib,
   pkgs,
+  unstable,
   ...
-}@args:
+}:
 
-with args;
 {
   environment.systemPackages = with pkgs; [
     killall
