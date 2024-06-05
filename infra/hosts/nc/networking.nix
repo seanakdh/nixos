@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  hostname,
   ...
 }:
 
 {
   networking.domain = "ohanlon-it.net";
-  networking.hostName = "nc";
+  networking.hostName = hostname;
   networking.defaultGateway = "10.10.100.254";
   networking.nameservers = [ "10.10.100.254" ];
   networking.interfaces.eth0.ipv4.addresses = [

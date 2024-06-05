@@ -1,13 +1,19 @@
-{ config, lib, pkgs, unstable,  ... }:
+{
+  config,
+  lib,
+  pkgs,
+  unstable,
+  ...
+}:
 
 {
-  imports = with unstable;
-  [
-    ./packages.nix
-    ./security.nix
+  imports = with unstable; [
     ./boot.nix
     ./sh.nix
   ];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "23.11";
 }

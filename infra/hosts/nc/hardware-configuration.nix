@@ -36,7 +36,7 @@
     ];
   };
 
-  fileSystems."/nextcloud-data" = {
+  fileSystems."/var/lib/nextcloud/data" = {
     device = "/dev/disk/by-uuid/ab200328-9bc9-4826-ab33-30a0ebe81f0e";
     fsType = "ext4";
   };

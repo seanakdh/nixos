@@ -9,6 +9,7 @@ let
   aliases = {
     ll = "ls -al";
     rebuild = "sudo nixos-rebuild switch --cores 5";
+    rebuild-nc = "nixos-rebuild --target-host nc-home --use-remote-sudo switch --flake ~/.config/nixos#nc --cores 5";
     upgrade = "nix flake update ~/.config/nixos && sudo nixos-rebuild switch --upgrade --cores 5";
     emacs = "emacs -nw";
     wg-stop = "sudo systemctl stop wg-quick-wg0.service";

@@ -1,6 +1,28 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  unstable,
+  ...
+}:
 
 {
+  environment.systemPackages = with pkgs; [
+    git
+    killall
+    chromium
+    unstable.emacs
+    neofetch
+    firefox
+    gvfs
+    polkit
+    gnome.gnome-keyring
+    deploy-rs
+  ];
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+  };
   security = {
     polkit.enable = true;
     rtkit.enable = true;
@@ -23,8 +45,4 @@
   };
   services.gvfs.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  environment.systemPackages = with pkgs; [
-    polkit
-    gnome.gnome-keyring
-  ];
 }
