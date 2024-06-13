@@ -30,6 +30,9 @@
     ripgrep
     sqlite
     wordnet
+    ghc
+    haskell-language-server
+    cabal-install
   ];
   programs.java.enable = true;
 }

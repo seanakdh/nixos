@@ -12,6 +12,7 @@ font pango:SauceCodePro Nerd Font 12
 ##exec --no-startup-id blueman-tray
 #start keepassxc
 exec --no-startup-id keepassxc
+exec --no-startup-id opensnitch-ui --background
 # start Printer applet
 ## exec --no-startup-id system-config-printer-applet
 
@@ -195,7 +196,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -c ~/.config/nixos/configs/i3status/config
+        status_command i3status -c ~/.config/nixos/system/wm/xfce-i3/i3status/config
 }
 
 # set swissgerman layout because default is US 

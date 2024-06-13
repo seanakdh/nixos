@@ -13,7 +13,7 @@
     videoDrivers = [ "modesetting" ];
     windowManager.i3 = {
       enable = true;
-      configFile = ../../configs/i3/config;
+      configFile = ./i3/config;
       extraPackages = with pkgs; [
         i3status
         dmenu

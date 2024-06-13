@@ -10,13 +10,14 @@
     ./aliases.nix
     ./networking.nix
     ./hardware-configuration.nix
-    ../../../system/applications/server_base.nix
-    ../../../system/services/nextcloud.nix
-    ../../../system/services/sshd.nix
+    #../../containers/nginx.nix
+    ../../../system/applications/server
+    ../../../system/services/server/nextcloud.nix
+    ../../../system/services/server
     ../../../system/base/sh.nix
     ../../../system/base/boot.nix
     ../../../system/env
-    ../../../users/admin
+    ../../../users/server
   ];
   nix.settings.trusted-users = [
     "admin"
@@ -28,5 +29,6 @@
     "nix-command"
     "flakes"
   ];
+
   system.stateVersion = "23.11";
 }

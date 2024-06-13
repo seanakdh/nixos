@@ -4,9 +4,15 @@
   pkgs,
   unstable,
   ...
-}:
+}@inputs:
 
 {
+  imports = with inputs; [
+    ./vm.nix
+    ./utils.nix
+    ./office.nix
+    ./development.nix
+  ];
   environment.systemPackages = with pkgs; [
     git
     killall

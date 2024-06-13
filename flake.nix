@@ -22,10 +22,12 @@
             hostname:
             {
               system ? "x86_64-linux",
+              username ? "admin",
             }:
             nixpkgs.lib.nixosSystem {
               specialArgs = {
-                inherit hostname system;
+                inherit hostname system username;
+
                 pkgs = import nixpkgs {
                   inherit system;
                   config.allowUnfree = allowUnfree;
@@ -38,6 +40,11 @@
               modules = [ ./clients/${hostname} ];
             };
         in
-        nixpkgs.lib.mapAttrs mkHost { tux = { }; };
+
+        nixpkgs.lib.mapAttrs mkHost {
+          tux = {
+            username = "sean";
+          };
+        };
     };
 }

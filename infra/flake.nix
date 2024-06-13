@@ -41,41 +41,7 @@
             };
           };
         };
-
-      # Here, we have the following list:
-      #
-      #     [
-      #       {
-      #         nixosConfigurations.nc = /* … */;
-      #         deploy.nodes.nc = /* … */;
-      #       }
-      #
-      #       {
-      #         nixosConfigurations.tux = /* … */;
-      #         deploy.nodes.tux = /* … */;
-      #       }
-      #     ]
       mkHostsAndDeployList = lib.mapAttrsToList mkHostsAndDeploy hosts;
-
-      # Here, we have the following attribute set:
-      #
-      #     {
-      #       nixosConfigurations = {
-      #         nc = /* … */;
-      #         tux = /* … */;
-      #       };
-      #       deploy.nodes = {
-      #         nc = /* … */;
-      #         tux = /* … */;
-      #       };
-      #     }
-      #
-      # This already matches the shape Flake `outputs` function should return.
-      #
-      # `foldl'` (called `reduce` in JavaScript) is basically a loop.
-      # Here, specifically, we repeatedly recursively merge the attribute sets
-      # from the `nixosConfigurationsAndDeploysList` into the result set,
-      # starting with an empty attribute set.
       mkHostsAndDeployMerged = lib.foldl' lib.recursiveUpdate { } mkHostsAndDeployList;
     in
     mkHostsAndDeployMerged

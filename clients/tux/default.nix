@@ -10,23 +10,21 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./aliases.nix
-    ../../system/base
-    ../../users/sean
-    ../../system/wm/xfce4-i3.nix
-    # ../../system/wm/hyprland.nix
+    ../../users/client
     ../../system/env
+    ../../system/base
+    ../../system/services/client
+    ../../system/applications/client
+    ../../system/wm/xfce4-i3
+    # ../../system/wm/hyprland.nix
     ../../system/hardware/intel.nix
-    ../../system/services/audio.nix
-    ../../system/services/bluetooth.nix
-    ../../system/services/printing.nix
-    ../../system/services/sshc.nix
-    ../../system/applications/office.nix
-    ../../system/applications/utils.nix
-    ../../system/applications/development.nix
-    ../../system/applications/vm.nix
-    ../../system/applications/client_base.nix
     ../../system/fonts/nerdfonts.nix
   ];
+  services.clamav.daemon.enable = true;
+  services.clamav.updater.enable = true;
+  # services.opensnitch.enable = true;
+  # services.opensnitch.settings.DefaultAction = "deny";
+  # environment.systemPackages = with pkgs; [ opensnitch-ui ];
   system.stateVersion = "23.11";
   nix.settings.experimental-features = [
     "nix-command"
