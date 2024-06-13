@@ -1,4 +1,9 @@
-{ config, lib, pkgs, unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   environment.systemPackages = with pkgs; [
@@ -6,7 +11,7 @@
     zim
     nextcloud-client
     spotify
-    unstable.obsidian
+    obsidian
     evolution
   ];
 }

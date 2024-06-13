@@ -1,10 +1,15 @@
-{ config, lib, unstable, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.package = unstable.virtualbox;
+  virtualisation.virtualbox.host.package = pkgs.virtualbox;
   # virtualisation.vmware.host.enable = true;
-  # virtualisation.vmware.host.package = unstable.vmware-workstation;
+  # virtualisation.vmware.host.package = pkgs.vmware-workstation;
   # qemu
   # needed for virtmanager config store
   # programs.dconf.enable = true;
@@ -33,5 +38,4 @@
   #   };
   #   spiceUSBRedirection.enable = true;
   # };
-
 }

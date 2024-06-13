@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  unstable,
   ...
 }@inputs:
 
@@ -17,7 +16,7 @@
     git
     killall
     chromium
-    unstable.emacs
+    emacs
     neofetch
     firefox
     gvfs

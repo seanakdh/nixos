@@ -2,12 +2,11 @@
   config,
   lib,
   pkgs,
-  unstable,
   ...
 }:
 
 {
-  imports = with unstable; [
+  imports = [
     ./boot.nix
     ./sh.nix
   ];

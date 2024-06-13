@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  unstable,
   ...
 }:
 
@@ -12,17 +11,17 @@
     gcc
     gnumake
     cmake
-    unstable.kotlin-language-server
+    kotlin-language-server
     kotlin
     ktlint
-    unstable.rust-analyzer
-    unstable.rustc
-    unstable.cargo
-    unstable.rustfmt
+    rust-analyzer
+    rustc
+    cargo
+    rustfmt
     jetbrains.idea-community
     nil
     nixfmt-rfc-style
-    unstable.vscodium
+    vscodium
     jdk21
     graphviz
     shfmt
