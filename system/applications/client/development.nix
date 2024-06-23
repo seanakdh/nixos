@@ -21,6 +21,7 @@
     jetbrains.idea-community
     nil
     nixfmt-rfc-style
+    nixpkgs-fmt
     vscodium
     jdk21
     graphviz
@@ -32,6 +33,8 @@
     ghc
     haskell-language-server
     cabal-install
+    go
+    gopls
   ];
   programs.java.enable = true;
 }

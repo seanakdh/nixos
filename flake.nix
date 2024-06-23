@@ -3,10 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
+      # the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { self, nixpkgs }@inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+    }@inputs:
     let
       allowUnfree = true;
     in
@@ -27,7 +40,24 @@
                   config.allowUnfree = allowUnfree;
                 };
               };
-              modules = [ ./clients/${hostname} ];
+              modules = [
+                ./clients/${hostname}
+
+                # home-manager.nixosModules.home-manager
+                # {
+                #   home-manager.useGlobalPkgs = true;
+                #   home-manager.useUserPackages = true;
+                #   home-manager.backupFileExtension = "backup";
+                #   home-manager.extraSpecialArgs = {
+                #     inherit username;
+                #   };
+
+                #   # TODO replace ryan with your own username
+                #   home-manager.users.${username}.imports = [ ./users/client/home.nix ];
+                #   # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+                # }
+
+              ];
             };
         in
         nixpkgs.lib.mapAttrs mkHost {

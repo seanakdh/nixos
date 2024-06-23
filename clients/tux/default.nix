@@ -15,8 +15,8 @@
     ../../system/base
     ../../system/services/client
     ../../system/applications/client
-    ../../system/wm/xfce4-i3
-    # ../../system/wm/hyprland.nix
+    # ../../system/wm/xfce4-i3
+    ../../system/wm/hyprland.nix
     ../../system/hardware/intel.nix
     ../../system/fonts/nerdfonts.nix
   ];

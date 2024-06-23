@@ -18,6 +18,9 @@
     Host nc-home
          HostName nix-test.ohanlon.it
          User admin
+     Host github.com
+          HostName github.com
+          User git
 
     Host *
          IdentityAgent /run/user/1000/ssh-agent

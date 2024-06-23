@@ -17,7 +17,6 @@
     wget
     btop
     ksnip
-    copyq
     du-dust
     bat
     xclip
@@ -28,6 +27,8 @@
     wireguard-tools
     inetutils
     dig
+    krusader
+
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;

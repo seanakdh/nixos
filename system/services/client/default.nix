@@ -2,6 +2,8 @@
   config,
   lib,
   pkgs,
+  username,
+  home-manager,
   ...
 }@inputs:
 
