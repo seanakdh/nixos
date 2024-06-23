@@ -14,9 +14,9 @@
     }:
     let
       inherit (nixpkgs) lib;
-      domain = "ohanlon-it.net";
+      domain = "ohanlon.it";
       hosts = {
-        nc = { };
+        nix-test = { };
       };
       mkHostsAndDeploy =
         hostname:
@@ -28,7 +28,7 @@
           nixosConfigurations.${hostname} = lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit hostname;
+              inherit hostname dom;
             };
             modules = [ ./hosts/${hostname} ];
           };

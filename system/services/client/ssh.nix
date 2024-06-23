@@ -8,15 +8,15 @@
 {
   programs.ssh.extraConfig = ''
     Host pve-home
-         HostName pve.ohanlon-it.net
+         HostName pve.ohanlon.it
          User root
 
     Host fw-home
-         HostName fw01.ohanlon-it.net
+         HostName fw01.ohanlon.it
          User admin
 
     Host nc-home
-         HostName nc.ohanlon-it.net
+         HostName nix-test.ohanlon.it
          User admin
 
     Host *

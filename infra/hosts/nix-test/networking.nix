@@ -6,17 +6,16 @@
   dom,
   ...
 }:
-
+let
+  bridge = "br0";
+in
 {
   networking = {
     domain = dom;
     bridges.br0.interfaces = [ "eth0" ];
     hostName = hostname;
+    defaultGateway.address = "10.10.100.254";
     nameservers = [ "10.10.100.254" ];
-    defaultGateway = {
-      address = "10.10.100.254";
-      interface = "br0";
-    };
     interfaces.br0.ipv4.addresses = [
       {
         address = "10.10.100.50";
@@ -27,7 +26,6 @@
       enable = true;
       internalInterfaces = [ "ve-+" ];
       externalInterface = "br0";
-      # Lazy IPv6 connectivity for the container
       enableIPv6 = false;
     };
     nftables.enable = true;

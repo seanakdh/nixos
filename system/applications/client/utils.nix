@@ -26,6 +26,8 @@
     xarchiver
     ansible
     wireguard-tools
+    inetutils
+    dig
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;
