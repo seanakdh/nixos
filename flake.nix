@@ -2,7 +2,8 @@
   description = "Nixos config flake for multiple Hosts";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -15,22 +16,23 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
+    { self
+    , nixpkgs
+    , home-manager
+    , nixpkgs-unstable
+    ,
     }@inputs:
     let
       allowUnfree = true;
     in
-    {
+    with inputs; {
       nixosConfigurations =
         let
           mkHost =
             hostname:
-            {
-              system ? "x86_64-linux",
-              username ? "admin",
+            { system ? "x86_64-linux"
+            , username ? "admin"
+            ,
             }:
             nixpkgs.lib.nixosSystem {
               specialArgs = {
@@ -39,8 +41,13 @@
                   inherit system;
                   config.allowUnfree = allowUnfree;
                 };
+                unstable = import nixpkgs-unstable
+                  {
+                    inherit system;
+                    config.allowUnfree = allowUnfree;
+                  };
               };
-              modules = [
+              modules = with inputs; [
                 ./clients/${hostname}
 
                 # home-manager.nixosModules.home-manager

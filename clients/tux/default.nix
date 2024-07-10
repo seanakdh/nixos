@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }@inputs:
 
 {
@@ -15,13 +14,13 @@
     ../../system/base
     ../../system/services/client
     ../../system/applications/client
-    # ../../system/wm/xfce4-i3
+    ../../system/wm/xfce4-i3
     ../../system/wm/hyprland.nix
     ../../system/hardware/intel.nix
     ../../system/fonts/nerdfonts.nix
   ];
-  services.clamav.daemon.enable = true;
-  services.clamav.updater.enable = true;
+  # services.clamav.daemon.enable = true;
+  # services.amav.updater.enable = true;
   # services.opensnitch.enable = true;
   # services.opensnitch.settings.DefaultAction = "deny";
   # environment.systemPackages = with pkgs; [ opensnitch-ui ];

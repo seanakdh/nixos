@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 {
@@ -22,6 +21,7 @@
     libsForQt5.qt5.qtwayland
     swaylock
     libsForQt5.breeze-icons
+    hypridle
     # mpd
   ];
   xdg = {
@@ -46,7 +46,7 @@
     xwayland.enable = true;
   };
   services.displayManager = {
-    defaultSession = "hyprland";
+    # defaultSession = "hyprland";
   };
 
   systemd.user.services.kanshi = {

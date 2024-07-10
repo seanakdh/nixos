@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }@inputs:
 
 {
@@ -18,7 +17,8 @@
     chromium
     emacs
     neofetch
-    firefox
+    # firefox
+    librewolf
     gvfs
     polkit
     gnome.gnome-keyring

@@ -1,12 +1,11 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 {
   programs.bash = {
-    completion.enable = true;
+    enableCompletion = true;
   };
   programs.zsh = {
     enable = true;

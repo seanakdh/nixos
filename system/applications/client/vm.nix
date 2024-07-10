@@ -1,13 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config
+, lib
+, pkgs
+, ...
+}@inputs:
 
-{
+with inputs; {
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.package = pkgs.virtualbox;
+  virtualisation.virtualbox.host.package = unstable.virtualbox;
   # virtualisation.vmware.host.enable = true;
   # virtualisation.vmware.host.package = pkgs.vmware-workstation;
   # qemu
