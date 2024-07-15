@@ -29,6 +29,7 @@
     newSession = true;
     shortcut = "b";
     keyMode = "vi";
+    escapeTime = 0;
   };
 
   environment.localBinInPath = true;

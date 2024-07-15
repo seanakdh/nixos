@@ -21,6 +21,7 @@
       "video"
       "users"
       "dialout"
+      "docker"
     ];
   };
   networking = {

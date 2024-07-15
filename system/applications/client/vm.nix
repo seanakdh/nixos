@@ -7,7 +7,12 @@
 with inputs; {
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.package = unstable.virtualbox;
-  # virtualisation.vmware.host.enable = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+    # virtualisation.vmware.host.enable = true;
   # virtualisation.vmware.host.package = pkgs.vmware-workstation;
   # qemu
   # needed for virtmanager config store

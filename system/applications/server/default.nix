@@ -13,5 +13,8 @@
     htop
     curl
     tmux
+    helix
+    # lazygit
+    yazi
   ];
 }

@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 {
@@ -28,13 +27,20 @@
     shfmt
     shellcheck
     ripgrep
-    sqlite
     wordnet
     ghc
     haskell-language-server
     cabal-install
     go
     gopls
+    golangci-lint-langserver
+    golangci-lint
+    impl
+    gotests
+    nodePackages_latest.vscode-html-languageserver-bin
+    nodePackages_latest.vscode-css-languageserver-bin
+    delve
+    docker
   ];
   programs.java.enable = true;
 }

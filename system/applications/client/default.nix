@@ -15,14 +15,15 @@
     git
     killall
     chromium
-    emacs
-    neofetch
     # firefox
     librewolf
     gvfs
     polkit
     gnome.gnome-keyring
     deploy-rs
+    helix
+    lazygit
+    yazi
   ];
   programs.neovim = {
     enable = true;
