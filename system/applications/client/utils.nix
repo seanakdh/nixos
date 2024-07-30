@@ -28,7 +28,7 @@
     inetutils
     dig
     krusader
-
+    jq
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;

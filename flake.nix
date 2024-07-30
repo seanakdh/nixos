@@ -16,23 +16,24 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , nixpkgs-unstable
-    ,
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixpkgs-unstable,
     }@inputs:
     let
       allowUnfree = true;
     in
-    with inputs; {
+    with inputs;
+    {
       nixosConfigurations =
         let
           mkHost =
             hostname:
-            { system ? "x86_64-linux"
-            , username ? "admin"
-            ,
+            {
+              system ? "x86_64-linux",
+              username ? "admin",
             }:
             nixpkgs.lib.nixosSystem {
               specialArgs = {
@@ -41,11 +42,10 @@
                   inherit system;
                   config.allowUnfree = allowUnfree;
                 };
-                unstable = import nixpkgs-unstable
-                  {
-                    inherit system;
-                    config.allowUnfree = allowUnfree;
-                  };
+                unstable = import nixpkgs-unstable {
+                  inherit system;
+                  config.allowUnfree = allowUnfree;
+                };
               };
               modules = with inputs; [
                 ./clients/${hostname}
@@ -63,7 +63,6 @@
                 #   home-manager.users.${username}.imports = [ ./users/client/home.nix ];
                 #   # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
                 # }
-
               ];
             };
         in

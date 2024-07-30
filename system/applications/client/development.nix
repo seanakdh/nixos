@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 {
@@ -17,6 +18,7 @@
     rustc
     cargo
     rustfmt
+    clippy
     jetbrains.idea-community
     nil
     nixfmt-rfc-style
@@ -40,7 +42,8 @@
     nodePackages_latest.vscode-html-languageserver-bin
     nodePackages_latest.vscode-css-languageserver-bin
     delve
-    docker
+    httpie
+    lldb_16
   ];
   programs.java.enable = true;
 }

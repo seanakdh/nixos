@@ -5,13 +5,14 @@
 }@inputs:
 
 with inputs; {
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.package = unstable.virtualbox;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+    virtualisation.virtualbox.host.enable = true;
+    virtualisation.virtualbox.host.package = unstable.virtualbox;
+    virtualisation.docker.enable = true;
+    virtualisation.docker.autoPrune.enable = true;
+    virtualisation.docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
     # virtualisation.vmware.host.enable = true;
   # virtualisation.vmware.host.package = pkgs.vmware-workstation;
   # qemu

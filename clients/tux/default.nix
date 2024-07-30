@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }@inputs:
 
 {
@@ -10,7 +11,7 @@
     ./networking.nix
     ./aliases.nix
     ../../users/client
-    ../../system/env
+      ../../system/env
     ../../system/base
     ../../system/services/client
     ../../system/applications/client
@@ -31,8 +32,8 @@
   ];
   environment.variables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
-    BROWSER = "firefox";
+    BROWSER = "librewolf";
     TERMINAL = "xfce4-terminal";
-    EDITOR = "emacs";
+    EDITOR = "hx";
   };
 }
