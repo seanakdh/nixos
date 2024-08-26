@@ -11,8 +11,8 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
-    hostAddress = "10.10.100.50";
-    localAddress = "10.10.100.50";
+    hostAddress = "10.10.150.10";
+    localAddress = "10.10.150.50";
     extraFlags = [ "-U" ];
     config =
       {
@@ -28,11 +28,11 @@
           ../../system/env
           ../../users/admin
         ];
-        services.nginx = {
+        services.nextcloud = {
           enable = true;
-          virtualHosts = {
-            "ohanlon.it" = { };
-          };
+          package = pkgs.nextcloud29;
+          hostName = "nc.ohanlon-it.net";
+          config.adminpassFile = "/etc/nextcloud-admin-pass";
         };
         system.stateVersion = "24.05";
         networking = {

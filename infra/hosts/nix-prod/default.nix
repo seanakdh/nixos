@@ -10,7 +10,7 @@
     ./aliases.nix
     ./networking.nix
     ./hardware-configuration.nix
-    #../../containers/nginx.nix
+    ../../containers/nextcloud.nix
     ../../../system/applications/server
     ../../../system/services/server/nextcloud.nix
     ../../../system/services/server
