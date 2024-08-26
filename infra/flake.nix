@@ -17,6 +17,7 @@
       domain = "ohanlon.it";
       hosts = {
         nix-test = { };
+        nix-prod = { };
       };
       mkHostsAndDeploy =
         hostname:

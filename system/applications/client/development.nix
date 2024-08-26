@@ -3,9 +3,9 @@
   lib,
   pkgs,
   ...
-}:
+}@inputs:
 
-{
+with inputs; {
   environment.systemPackages = with pkgs; [
     libtool
     gcc
@@ -33,10 +33,10 @@
     ghc
     haskell-language-server
     cabal-install
-    go
-    gopls
-    golangci-lint-langserver
-    golangci-lint
+    unstable.go
+    unstable.gopls
+    unstable.golangci-lint-langserver
+    unstable.golangci-lint
     impl
     gotests
     nodePackages_latest.vscode-html-languageserver-bin
@@ -44,6 +44,8 @@
     delve
     httpie
     lldb_16
+    zigpkgs.master
+    unstable.zls
   ];
   programs.java.enable = true;
 }

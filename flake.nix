@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    zig.url = "github:mitchellh/zig-overlay";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -21,6 +22,7 @@
       nixpkgs,
       home-manager,
       nixpkgs-unstable,
+      zig,
     }@inputs:
     let
       allowUnfree = true;
@@ -39,6 +41,7 @@
               specialArgs = {
                 inherit hostname system username;
                 pkgs = import nixpkgs {
+                  overlays = [ zig.overlays.default ];
                   inherit system;
                   config.allowUnfree = allowUnfree;
                 };
@@ -47,23 +50,7 @@
                   config.allowUnfree = allowUnfree;
                 };
               };
-              modules = with inputs; [
-                ./clients/${hostname}
-
-                # home-manager.nixosModules.home-manager
-                # {
-                #   home-manager.useGlobalPkgs = true;
-                #   home-manager.useUserPackages = true;
-                #   home-manager.backupFileExtension = "backup";
-                #   home-manager.extraSpecialArgs = {
-                #     inherit username;
-                #   };
-
-                #   # TODO replace ryan with your own username
-                #   home-manager.users.${username}.imports = [ ./users/client/home.nix ];
-                #   # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-                # }
-              ];
+              modules = with inputs; [ ./clients/${hostname} ];
             };
         in
         nixpkgs.lib.mapAttrs mkHost {

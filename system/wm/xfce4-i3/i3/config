@@ -131,12 +131,12 @@ set $ws4 "4: VB"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8: Spotify"
+set $ws8 "8"
 set $ws9 "9: Thunderbird"
 set $ws10 "10: External Monitor"
 
 #set workspace 10 to HDMI-1
-workspace 10 output HDMI-1
+#workspace 10 output HDMI-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

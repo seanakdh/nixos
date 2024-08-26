@@ -10,8 +10,8 @@
     libreoffice
     zim
     nextcloud-client
-    spotify
+    # spotify
     obsidian
-    evolution
+    # evolution
   ];
 }

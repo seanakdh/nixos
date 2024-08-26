@@ -6,28 +6,26 @@
   dom,
   ...
 }:
-
+let
+  bridge = "br0";
+in
 {
   networking = {
     domain = dom;
-    bridges.br0.interfaces = [ "eth0" ];
+    bridges.${bridge}.interfaces = [ "eth0" ];
     hostName = hostname;
-    nameservers = [ "10.10.100.254" ];
-    defaultGateway = {
-      address = "10.10.100.254";
-      interface = "br0";
-    };
-    interfaces.br0.ipv4.addresses = [
+    defaultGateway.address = "10.10.150.254";
+    nameservers = [ "10.10.150.254" ];
+    interfaces.${bridge}.ipv4.addresses = [
       {
-        address = "10.10.100.50";
+        address = "10.10.150.10";
         prefixLength = 24;
       }
     ];
     nat = {
       enable = true;
       internalInterfaces = [ "ve-+" ];
-      externalInterface = "br0";
-      # Lazy IPv6 connectivity for the container
+      externalInterface = bridge;
       enableIPv6 = false;
     };
     nftables.enable = true;
