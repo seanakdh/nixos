@@ -2,8 +2,10 @@
   description = "Home Server Infrastructure flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     deploy-rs.url = "github:serokell/deploy-rs";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs =
@@ -11,7 +13,9 @@
       self,
       nixpkgs,
       deploy-rs,
-    }:
+      unstable,
+      sops-nix,
+    }@inputs:
     let
       inherit (nixpkgs) lib;
       domain = "ohanlon.it";
@@ -25,20 +29,21 @@
           system ? "x86_64-linux",
           dom ? domain,
         }:
+        with inputs;
         {
           nixosConfigurations.${hostname} = lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit hostname dom;
+              inherit hostname dom sops-nix;
             };
-            modules = [ ./hosts/${hostname} ];
+            modules = with inputs; [ ./hosts/${hostname} ];
           };
           deploy.nodes.${hostname} = {
             hostname = "${hostname}.${dom}";
             profiles.system = {
               user = "root";
               sshUser = "admin";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${hostname};
+              path = deploy-rs.lib.${system}.activate.nixos self.nixosConfigurations.${hostname};
             };
           };
         };

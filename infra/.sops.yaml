@@ -1,0 +1,7 @@
+keys:
+ - &sean age1wqse4ryvr6lp7sn99pw057nwhza80x0rpk48yy4mvktt324w2vzs97qrxk
+creation_rules:
+ - path_regex: secrets/secrets.yaml$
+   key_groups:
+   - age: 
+     - *sean

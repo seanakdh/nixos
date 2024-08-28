@@ -10,6 +10,7 @@
     bind
     fzf
     keepassxc
+    bitwarden
     chezmoi
     git
     unrar
@@ -33,6 +34,9 @@
     bitwig-studio
     gns3-gui
     gns3-server
+    sops
+    age
+    ssh-to-age
   ];
   services.locate.localuser = null;
   services.locate.package = pkgs.mlocate;

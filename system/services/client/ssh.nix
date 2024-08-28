@@ -15,9 +15,14 @@
          HostName fw01.ohanlon.it
          User admin
 
-    Host nc-home
+    Host nix-test
          HostName nix-test.ohanlon.it
          User admin
+
+    Host nix-prod
+         HostName nix-prod.ohanlon.it
+         User admin
+
      Host github.com
           HostName github.com
           User git

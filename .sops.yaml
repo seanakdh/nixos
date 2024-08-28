@@ -1,0 +1,16 @@
+keys:
+ - &users:
+   - &sean age1wqse4ryvr6lp7sn99pw057nwhza80x0rpk48yy4mvktt324w2vzs97qrxk
+ - &hosts:
+   - &nextcloud age12ny9kgqj5mfjeku5qxuy8tfyds0ugjlmjm6ytlqjq4jur522ceus0thnkf
+   - &nix-prod age1kvw7ykgq58rye0tpakpn0kwvqqd05ljup3aw45xwh2fx2azqmqfscl5gly
+   - &vaultwarden age1wckzythxdjh2ewvlau3z2q335r73agtcgp2ct6824rwlcxmkc9mqwzdxt0
+creation_rules:
+ - path_regex: secrets.yaml$
+   key_groups:
+   - age: 
+     - *sean
+     - *nextcloud
+     - *nix-prod
+     - *vaultwarden
+      

@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  unstable,
   ...
 }@inputs:
 
 {
 
-  containers.nginx = {
+  containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
@@ -23,16 +24,17 @@
       }:
       {
         imports = with inputs; [
+          sops-nix.nixosModules.sops
           ../../system/applications/server
           ../../system/services/server
           ../../system/env
-          ../../users/admin
+          ../../users/server
         ];
         services.nextcloud = {
           enable = true;
           package = pkgs.nextcloud29;
-          hostName = "nc.ohanlon-it.net";
-          config.adminpassFile = "/etc/nextcloud-admin-pass";
+          hostName = "cloud.ohanlon.it";
+          config.adminpassFile = "/run/secrets/nextcloud-root-pw";
         };
         system.stateVersion = "24.05";
         networking = {
@@ -48,6 +50,18 @@
           # Use systemd-resolved inside the container
           # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
           useHostResolvConf = lib.mkForce false;
+        };
+        sops = {
+          defaultSopsFile = ../../secrets.yaml;
+          defaultSopsFormat = "yaml";
+          age = {
+            sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+            keyFile = "/var/lib/sops-nix/keys.txt";
+            generateKey = true;
+          };
+          secrets."nextcloud-root-pw" = { 
+            owner = "nextcloud";
+          };
         };
       };
   };
