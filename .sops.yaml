@@ -2,7 +2,7 @@ keys:
  - &users:
    - &sean age1wqse4ryvr6lp7sn99pw057nwhza80x0rpk48yy4mvktt324w2vzs97qrxk
  - &hosts:
-   - &nextcloud age12ny9kgqj5mfjeku5qxuy8tfyds0ugjlmjm6ytlqjq4jur522ceus0thnkf
+   - &nextcloud age1xk7d3yh3pwsxme7jkwc6ktwyq52ajtdq862l70z4sg7jzg4laeqq2aumjw
    - &nix-prod age1kvw7ykgq58rye0tpakpn0kwvqqd05ljup3aw45xwh2fx2azqmqfscl5gly
    - &vaultwarden age1wckzythxdjh2ewvlau3z2q335r73agtcgp2ct6824rwlcxmkc9mqwzdxt0
 creation_rules:

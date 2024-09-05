@@ -13,5 +13,6 @@
     # spotify
     obsidian
     # evolution
+    xournalpp
   ];
 }

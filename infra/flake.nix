@@ -20,7 +20,7 @@
       inherit (nixpkgs) lib;
       domain = "ohanlon.it";
       hosts = {
-        nix-test = { };
+        # nix-test = { };
         nix-prod = { };
       };
       mkHostsAndDeploy =

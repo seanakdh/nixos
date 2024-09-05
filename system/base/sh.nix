@@ -15,7 +15,7 @@
     autosuggestions.async = true;
     syntaxHighlighting.enable = true;
     setOptions = [
-      "VI"
+      "EMACS"
       "HIST_IGNORE_DUPS"
       "SHARE_HISTORY"
       "HIST_FCNTL_LOCK"
@@ -27,8 +27,8 @@
   programs.tmux = {
     enable = true;
     newSession = true;
-    shortcut = "b";
-    keyMode = "vi";
+    # shortcut = "b";
+    keyMode = "emacs";
     escapeTime = 0;
   };
 

@@ -5,7 +5,8 @@
   ...
 }@inputs:
 
-with inputs; {
+with inputs;
+{
   environment.systemPackages = with pkgs; [
     libtool
     gcc
@@ -46,6 +47,8 @@ with inputs; {
     lldb_16
     zigpkgs.master
     unstable.zls
+    sbcl
+    rlwrap
   ];
   programs.java.enable = true;
 }

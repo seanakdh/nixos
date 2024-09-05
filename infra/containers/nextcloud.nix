@@ -13,8 +13,14 @@
     privateNetwork = true;
     hostBridge = "br0";
     hostAddress = "10.10.150.10";
-    localAddress = "10.10.150.50";
+    localAddress = "10.10.150.52";
     extraFlags = [ "-U" ];
+    bindMounts = {
+      "/var/lib/nextcloud/data" = {
+        hostPath = "/nextcloud/data";
+        isReadOnly = false;
+      };
+    };
     config =
       {
         config,
@@ -35,6 +41,8 @@
           package = pkgs.nextcloud29;
           hostName = "cloud.ohanlon.it";
           config.adminpassFile = "/run/secrets/nextcloud-root-pw";
+          database.createLocally = true;
+          configureRedis = true;
         };
         system.stateVersion = "24.05";
         networking = {
@@ -49,7 +57,7 @@
           };
           # Use systemd-resolved inside the container
           # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-          useHostResolvConf = lib.mkForce false;
+          useHostResolvConf = lib.mkForce true;
         };
         sops = {
           defaultSopsFile = ../../secrets.yaml;
@@ -59,7 +67,7 @@
             keyFile = "/var/lib/sops-nix/keys.txt";
             generateKey = true;
           };
-          secrets."nextcloud-root-pw" = { 
+          secrets."nextcloud-root-pw" = {
             owner = "nextcloud";
           };
         };

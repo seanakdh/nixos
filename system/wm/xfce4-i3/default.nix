@@ -8,6 +8,7 @@
 {
   services.xserver = {
     xkb.layout = "ch";
+    xkb.options = "ctrl:nocaps";
     xkb.variant = "de_nodeadkeys";
     enable = true;
     videoDrivers = [ "modesetting" ];

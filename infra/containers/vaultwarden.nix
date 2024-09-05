@@ -49,6 +49,7 @@
             LOG_FILE = "/var/lib/bitwarden_rs/log";
           };
         };
+
         environment.etc = {
           "fail2ban/filter.d/vaultwarden.local".text = pkgs.lib.mkDefault (
             pkgs.lib.mkAfter ''
@@ -67,7 +68,8 @@
             vaultwarden.settings = {
               enabled = true;
               filter = "vaultwarden";
-              action = "nftables[type=allports]";
+              # banaction = "nftables[type=allports]";
+              action = "nftables[type=multiport, name=HTTP, port=\"https,http\"]";
               logpath = "/var/lib/bitwarden_rs/log";
               maxretry = 5;
               bantime = "1h";

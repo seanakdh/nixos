@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }@inputs:
 
+with inputs;
 {
   imports = with inputs; [
     ./vm.nix
@@ -21,9 +23,10 @@
     polkit
     gnome.gnome-keyring
     deploy-rs
-    helix
+    unstable.helix
     lazygit
     yazi
+    unstable.emacs
   ];
   programs.neovim = {
     enable = true;
