@@ -23,14 +23,13 @@ with inputs;
     polkit
     gnome.gnome-keyring
     deploy-rs
-    unstable.helix
     lazygit
     yazi
-    unstable.emacs
   ];
   programs.neovim = {
     enable = true;
     vimAlias = true;
+    #package = unstable.neovim;
   };
   security = {
     polkit.enable = true;

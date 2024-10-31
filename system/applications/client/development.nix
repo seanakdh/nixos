@@ -25,6 +25,7 @@ with inputs;
     nixfmt-rfc-style
     nixpkgs-fmt
     vscodium
+    (zulu.override { enableJavaFX = true; })
     jdk21
     graphviz
     shfmt
@@ -35,20 +36,20 @@ with inputs;
     haskell-language-server
     cabal-install
     unstable.go
+    unstable.godef
     unstable.gopls
     unstable.golangci-lint-langserver
     unstable.golangci-lint
+    templ
     impl
     gotests
-    nodePackages_latest.vscode-html-languageserver-bin
-    nodePackages_latest.vscode-css-languageserver-bin
     delve
     httpie
     lldb_16
     zigpkgs.master
-    unstable.zls
     sbcl
     rlwrap
+    zls-package
   ];
   programs.java.enable = true;
 }

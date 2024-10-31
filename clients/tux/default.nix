@@ -12,7 +12,7 @@
     ./networking.nix
     ./aliases.nix
     ../../users/client
-      ../../system/env
+    ../../system/env
     ../../system/base
     ../../system/services/client
     ../../system/applications/client
@@ -21,11 +21,6 @@
     ../../system/hardware/intel.nix
     ../../system/fonts/nerdfonts.nix
   ];
-  # services.clamav.daemon.enable = true;
-  # services.amav.updater.enable = true;
-  # services.opensnitch.enable = true;
-  # services.opensnitch.settings.DefaultAction = "deny";
-  # environment.systemPackages = with pkgs; [ opensnitch-ui ];
   system.stateVersion = "23.11";
   nix.settings.experimental-features = [
     "nix-command"
@@ -35,6 +30,6 @@
     QT_QPA_PLATFORMTHEME = "qt5ct";
     BROWSER = "librewolf";
     TERMINAL = "xfce4-terminal";
-    EDITOR = "hx";
+    EDITOR = "nvim";
   };
 }
